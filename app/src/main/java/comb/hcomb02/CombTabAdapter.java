@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -37,18 +38,20 @@ public class CombTabAdapter extends BaseAdapter {
     @Override
     // Create new CombAdapterView for each item referenced by the adapter
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ImageView imageView;
+//        ImageView imageView;
+        Button button;
         if (view == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8 );
+            button = new Button (mContext);
+            button.setBackgroundResource(mThumbs[i]);
+            button.setLayoutParams(new GridView.LayoutParams(85, 85));
+            button.setPadding(8, 8, 8, 8 );
+
         } else {
-            imageView = (ImageView) view;
+            button = (Button) view;
         }
-        imageView.setImageResource(mThumbs[i]);
-        return imageView;
+        button.setBackgroundResource(mThumbs[i]);
+        return button;
     }
 
     //Reference to our tabs
